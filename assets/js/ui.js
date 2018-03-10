@@ -154,7 +154,7 @@ function closeTransport() {
 function openTransport(cityID) {
 	updateTransport(cityID);
 	$('#transport_container').removeClass('displaynone');
-	$('#city-name').html(choose(['CrispyVille', 'LazTown', 'AzureTown', 'City of Microsoft', 'TrashVille', 'Greeny']))
+	$('#city-name').html(choose(['CrispyVille', 'LazTown', 'AzureTown', 'City of Microsoft', 'TrashVille', 'Greeny']));
 }
 
 function choose(choices) {
