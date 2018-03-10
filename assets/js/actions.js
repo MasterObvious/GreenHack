@@ -27,6 +27,7 @@ function establishConnection(city1, city2, type){
 	city1.addConnection(city2, type);
 	city2.addConnection(city1, type);
 	connectCities(city1, city2, type);
+	stateTravelSpeed += jsonData.research[type].price / 100;
 }
 
 function buildStation(city, type){
