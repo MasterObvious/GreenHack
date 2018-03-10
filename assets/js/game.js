@@ -1,5 +1,5 @@
 
 
-var startGame = function() {
+function initGame() {
   alert("This worked");
 }
