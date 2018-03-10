@@ -106,7 +106,7 @@ function buyFertiliser(){
 	console.log("buy fert");
 	if ( stateMoney > PRICE_OF_FERT ){
 		stateForestLevel *= 1.30;
-		stateMoney - PRICE_OF_FERT;
+		stateMoney -= PRICE_OF_FERT;
 		stateCO2 *= 0.85;
 		forestSize();
 	}else {
