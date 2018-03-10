@@ -92,3 +92,52 @@ html, body {
   font-family: sans-serif;
   margin: 0.5em;
 }
+
+#research_container {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: calc(50% - 200px);
+  right: calc(50% - 200px);
+  background-color: pink;
+  padding: 10px;
+  font-family: sans-serif;
+  color: white;
+}
+
+#research-template {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.research-name, p {
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+#research-close {
+  background-color: red;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+#research-close-x {
+  margin: 0;
+  margin-left: 9px;
+  cursor: pointer;
+}
+
+.ok-button {
+  background-color: green;
+  border-radius: 5px;
+  padding: 15px 5px;
+}
+
+#research-list {
+  height: 300px;
+  overflow-y: scroll;
+}
