@@ -57,3 +57,8 @@ function buildStation( rec_id, city_id ){
 		snackbar("You haven't already researched this!");
 	}
 }
+
+
+function propagandaEffect(happiness, budget) {
+	
+}

@@ -62,13 +62,15 @@ function initGame() {
 	//Initial state
 	stateTime = 0;
 	stateMoney = 5000;
-	stateHappiness = 100;
+	stateHappiness = 50;
 	stateCO2 = 0;
   statePollutionLevel = 0;
   stateForestLevel = 0;
   stateTravelSpeed = 0;
 	stateCurrentResearch = [];
 	stateMapStations = [];
+
+  updateUI();
 
 	var cars = jsonData.research[0];
 	stateCurrentResearch.push( cars.id );
@@ -96,7 +98,7 @@ function initGame() {
 
 function runGame() {
   if ( gameRunning ){
-		stateTime -= 1;
+		stateTime += 1;
 
 		adjustCO2();
 		adjustHappiness();
@@ -113,6 +115,10 @@ function runGame() {
     }
 	}
 }
+
+$('#next_month').click(function() {
+  runGame();
+})
 
 function adjustCO2() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
@@ -138,15 +144,15 @@ function loadCities(){
 function adjustHappiness() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
   let correction = 0.1;
-  let change = stateTime - stateTravelSpeed;
+  let change = (stateTime - stateTravelSpeed)*(100-stateHappiness);
   let delta = Math.round(change * correction * numberMultiplier);
-  stateHappiness = Math.min(stateHappiness + delta, 100);
+  stateHappiness = Math.min(stateHappiness - delta, 100);
   updateUI();
 }
 
 function adjustMoney() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
-  let change = 10*stateTime - stateCO2;
+  let change = 100*stateTime - stateCO2;
   let delta = Math.round(change * numberMultiplier);
   stateMoney += delta;
   updateUI();
