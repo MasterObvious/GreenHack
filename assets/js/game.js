@@ -116,16 +116,21 @@ function runGame() {
 	}
 }
 
+function loseGame() {
+  $('#game-over').removeClass('displaynone');
+}
+
 $('#next_month').click(function() {
   runGame();
 })
 
 function adjustCO2() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
-  let correction = 0.1;
+  let correction = 0.025;
   let change = statePollutionLevel - stateForestLevel;
   let delta = Math.round(change * correction * numberMultiplier);
   stateCO2 = Math.max(stateCO2 + delta, 0);
+  stateForestLevel = Math.min(Math.max(stateForestLevel - stateCO2, 0), 100)
   updateUI();
 }
 
@@ -153,7 +158,8 @@ function adjustHappiness() {
 function adjustMoney() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
   let change = 100*stateTime - stateCO2;
-  let delta = Math.round(change * numberMultiplier);
+  let correction = 10;
+  let delta = Math.round(change * numberMultiplier * correction);
   stateMoney += delta;
   updateUI();
 }
