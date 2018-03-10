@@ -14,7 +14,7 @@ function setIslandScale(percentage){
 }
 
 function placeCity(cityName, x, y){
-	let $city = $(".city_container").clone();
+	let $city = $("#city-template").clone();
 	$city.removeClass("displaynone");
 	$city.css("left", x + "%");
 	$city.css("top", y + "%");
@@ -25,7 +25,7 @@ function placeCity(cityName, x, y){
 function updateResearch() {
 	$('#research-list').empty();
 	jsonData.research.reverse().forEach(function(el) {
-		if (!(el in stateCurrentResearch)) {
+		if (!stateCurrentResearch.includes(el.id)) {
 			let $researchBlock = $("#research-template").clone();
 			$researchBlock.removeClass('displaynone');
 			$researchBlock.prependTo('#research-list');
@@ -35,6 +35,7 @@ function updateResearch() {
 			$researchBlock.find('.research-pollution').html(el.pollution);
 		}
 	})
+	jsonData.research.reverse();
 }
 
 function closeResearch() {

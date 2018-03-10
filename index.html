@@ -43,12 +43,15 @@
         </div>
         <svg id ="road_map" height = "100%" width = "100%">
         </svg>
-        <div class="displaynone city_container">
+        <div class="displaynone city_container" id="city-template">
           <img class = "city" src="assets/images/city.png" alt="city icon" />
+        </div>
+        <div class="city_container" id="research" style="left: 50%; top: 30%">
+          <img class = "city" src="assets/images/research.png" alt="research icon" onclick="openResearch();"/>
         </div>
       </div>
 
-      <div id="research_container" class="">
+      <div id="research_container" class="displaynone">
         <div id="research-close" onclick="closeResearch();">
           <h1 id="research-close-x" onclick="closeResearch();">X</h1>
         </div>
