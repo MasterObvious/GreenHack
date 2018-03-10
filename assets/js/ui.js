@@ -92,16 +92,38 @@ function updateTransport(cityID) {
 			$transportBlock.find('.transport-name').html(el.name);
 			$transportBlock.find('.transport-station-cost').html(el.station_cost);
 			$transportBlock.find('.transport-pollution').html(el.pollution);
+			$transportBlock.find('.transport-button').removeClass('delete-button');
+			$transportBlock.find('.transport-button').addClass('ok-button');
+			$transportBlock.find('.transport-button').find('.text').html('Build');
+		}else{
+			let $transportBlock = $("#transport-template").clone();
+			$transportBlock.removeClass('displaynone');
+			$transportBlock.prependTo('#transport-list');
+			$transportBlock.find('.transport-id').html(el.id);
+			$transportBlock.find('.transport-name').html(el.name);
+			$transportBlock.find('.transport-station-cost').html(el.station_cost);
+			$transportBlock.find('.transport-pollution').html(el.pollution);
+			$transportBlock.find('.transport-button').removeClass('ok-button');
+			$transportBlock.find('.transport-button').addClass('delete-button');
+			$transportBlock.find('.transport-button').find('.text').html('Destroy');
 		}
 	})
 	jsonData.research.reverse();
 
 	$('.transport-button').click(function() {
 		let tempId = parseInt($(this).parent().parent().find('.transport-id').text());
-		buildStation(cityList[cityID-1], tempId);
-		console.log("Building station at " + cityID);
-		updateTransport(cityID);
-		updateUI();
+		if ($(this).parent().parent().find('.transport-button').find('.text').html() == "Build"){
+			buildStation(cityList[cityID-1], tempId);
+			console.log("Building station at " + cityID);
+			updateTransport(cityID);
+			updateUI();
+		}else{
+			console.log("This is wokring here");
+			destroyStation(cityList[cityID-1], tempId);
+			updateTransport(cityID);
+			updateUI();
+		}
+
 	});
 
 }
