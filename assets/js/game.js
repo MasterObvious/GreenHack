@@ -35,7 +35,7 @@ function initGame() {
 	stateMapStations = [];
 
 	var cars = jsonData.research[0];
-	stateCurrentResearch.push( cars );
+	stateCurrentResearch.push( cars.id );
 
 	var city1 = [ cars.id ];
 	stateMapStations.push( city1 );
