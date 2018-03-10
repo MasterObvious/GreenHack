@@ -17,10 +17,21 @@ var stateMapStations;
 var gameRunning = false;
 var backgroundAudio;
 
+<<<<<<< HEAD
 function initGame() {
 	placeCity("harri", 50, 50);
 	loadJSON();
 
+=======
+var jsonData;
+function loadJSON(){
+	$.getJSON('assets/js/data.json', '', function(data){jsonData=data; initGame()});
+}
+
+function initGame() {
+	console.log("loading json");
+	console.log(jsonData)
+>>>>>>> 677e134ea9ef4b72af500067b3ab262841a65686
 	//Initial state
 	stateTime = 5 * 12;
 	stateMoney = 5000;
