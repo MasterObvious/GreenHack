@@ -103,7 +103,8 @@ function runGame() {
     setIslandScale(100-stateCO2);
 		generateEmergencies();
 		updateInformation();
-    if ( stateCO2 >= 100 ) {
+    updateUI();
+		if ( stateCO2 >= 100 ) {
       gameRunning = false;
       loseGame();
     }
