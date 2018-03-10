@@ -58,6 +58,38 @@ function openResearch() {
 	$('#research_container').removeClass('displaynone');
 }
 
+
+
+function updateProp() {
+	$('#prop-list').empty();
+	jsonData.propaganda.reverse().forEach(function(el) {
+		let $researchBlock = $("#prop-template").clone();
+		$researchBlock.removeClass('displaynone');
+		$researchBlock.prependTo('#prop-list');
+		$researchBlock.find('.prop-id').html(el.id);
+		$researchBlock.find('.prop-name').html(el.title);
+		$researchBlock.find('.prop-price').html(el.price);
+	});
+	jsonData.propaganda.reverse();
+
+	$('.prop-button').click(function() {
+		let tempId = parseInt($(this).parent().parent().find('.prop-id').text());
+		researchTransport(tempId);
+		updateResearch();
+	})
+
+}
+
+function closeProp() {
+	$('#prop_container').addClass('displaynone');
+}
+
+function openProp() {
+	updateProp();
+	$('#prop_container').removeClass('displaynone');
+}
+
+
 function connectCities(city1, city2, transportTypeId){
 	let xconnection = (Math.abs(city1.x - city2.x) > Math.abs(city1.y - city2.y));
 	let offset = 4;

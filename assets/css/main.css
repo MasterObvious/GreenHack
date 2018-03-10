@@ -123,7 +123,7 @@ html, body {
   margin: 0.5em;
 }
 
-#research_container {
+#research_container, #prop_container {
   position: absolute;
   width: 400px;
   height: 400px;
@@ -136,17 +136,17 @@ html, body {
   z-index: 10;
 }
 
-#research-template {
+#research-template, #prop-template {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.research-name, p {
+.research-name, p, .prop-name {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;
 }
 
-#research-close {
+#research-close, #prop-close {
   background-color: red;
   width: 40px;
   height: 40px;
@@ -156,7 +156,7 @@ html, body {
   cursor: pointer;
 }
 
-#research-close-x {
+#research-close-x, #prop-close-x {
   margin: 0;
   margin-left: 9px;
   cursor: pointer;
@@ -168,7 +168,7 @@ html, body {
   padding: 15px 5px;
 }
 
-#research-list {
+#research-list, #prop-list {
   height: 300px;
   overflow-y: scroll;
 }
