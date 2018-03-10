@@ -105,10 +105,24 @@ var PRICE_OF_FERT = 3000;
 function buyFertiliser(){
 	console.log("buy fert");
 	if ( stateMoney > PRICE_OF_FERT ){
-		stateForestLevel *= 1.30;
+		stateForestLevel *= 1.10;
 		stateMoney -= PRICE_OF_FERT;
 		stateCO2 *= 0.85;
 		forestSize();
+		updateUI();
+	}else {
+		snackbar("You cannot afford this!");
+	}
+}
+
+function buyInsta(){
+	console.log("buy insta");
+	if ( stateMoney > ( PRICE_OF_FERT * 1.5 ) ){
+		stateForestLevel *= 1.30;
+		stateMoney -= ( PRICE_OF_FERT * 1.5 );
+		stateCO2 *= 0.75;
+		forestSize();
+		updateUI();
 	}else {
 		snackbar("You cannot afford this!");
 	}
