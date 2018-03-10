@@ -5,3 +5,10 @@ function snackbar( title ){
 	x.innerHTML = title;
 	setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
+
+function setIslandScale(percentage){
+	$('#snow_land').animate({
+		height: percentage + '%',
+		width: percentage + '%'
+	}, 600, function(){})
+}
