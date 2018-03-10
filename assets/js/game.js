@@ -117,11 +117,19 @@ function loadCities(){
 		const city = new City(cities[i].id, cities[i].x, cities[i].y)
 		cityList.push(city);
 		if (i > 0){
+			connectCities(cityList[i], cityList[i-1], 1);
+			connectCities(cityList[i], cityList[i-1], 2);
 			connectCities(cityList[i], cityList[i-1], 3);
+			connectCities(cityList[i], cityList[i-1], 4);
+			connectCities(cityList[i], cityList[i-1], 5);
+			connectCities(cityList[i], cityList[i-1], 6);
+			connectCities(cityList[i], cityList[i-1], 7);
+			removeConnection(cityList[i], cityList[i-1], 1);
+			removeConnection(cityList[i], cityList[i-1], 2);
+			removeConnection(cityList[i], cityList[i-1], 3);
+
 		}
 	}
-
-
 }
 
 function adjustHappiness() {

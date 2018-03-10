@@ -1,3 +1,6 @@
+var transportColours = ["rgb(255,0,0)", "rgb(255,255,0)", "rgb(0,255,0)", "rgb(0,255,255)",
+												"rgb(0,0,255)", "rgb(255,0,255)", "rgb(255,255,255)"];
+
 
 function snackbar( title ){
 	var x = document.getElementById("snackbar")
@@ -56,7 +59,7 @@ function connectCities(city1, city2, transportTypeId){
 	let y2 = city2.y + offset;
 
 	offset = transportTypeId -4;
-	let scale = 1;
+	let scale = 0.5;
 	if (xconnection){
 		y1 += scale *offset;
 		y2 += scale * offset;
@@ -65,9 +68,33 @@ function connectCities(city1, city2, transportTypeId){
 		x2 += scale * offset;
 	}
 
-	let inner = "<line x1=\"" + x1 + "%\" y1=\"" + y1 + "%\" x2=\"" + x2 + "%\" y2=\"" + y2 + "%\" style=\"stroke:rgb(255,0,0);stroke-width:2\" />"
+	let inner = "<line x1=\"" + x1 + "%\" y1=\"" + y1 + "%\" x2=\"" + x2 + "%\" y2=\"" + y2 + "%\" style=\"stroke:" + transportColours[transportTypeId - 1] + ";stroke-width:2\" />";
 	let svg = document.getElementById("road_map");
 	svg.innerHTML+= inner;
+}
+
+function removeConnection(city1, city2, transportTypeId){
+	let xconnection = (Math.abs(city1.x - city2.x) > Math.abs(city1.y - city2.y));
+	let offset = 4;
+	let x1 = city1.x + offset;
+	let x2 = city2.x + offset;
+	let y1 = city1.y + offset;
+	let y2 = city2.y + offset;
+
+	offset = transportTypeId -4;
+	let scale = 0.5;
+	if (xconnection){
+		y1 += scale *offset;
+		y2 += scale * offset;
+	}else{
+		x1 += scale * offset;
+		x2 += scale * offset;
+	}
+
+	let inner = "<line x1=\"" + x1 + "%\" y1=\"" + y1 + "%\" x2=\"" + x2 + "%\" y2=\"" + y2 + "%\" style=\"stroke:" + transportColours[transportTypeId - 1] + ";stroke-width:2\"></line>";
+	let full = document.getElementById("road_map").innerHTML;
+	let res = full.replace(inner, "");
+	document.getElementById("road_map").innerHTML = res;
 }
 
 function pxToPer(px){
