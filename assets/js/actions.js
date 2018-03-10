@@ -101,8 +101,9 @@ function checkIfCityIsValid(city, type){
 	}
 }
 
-var PRICE_OF_FERT = 3000;
+
 function buyFertiliser(){
+	var PRICE_OF_FERT = 200 * stateTime;
 	console.log("buy fert");
 	if ( stateMoney > PRICE_OF_FERT ){
 		stateForestLevel *= 1.10;
@@ -116,6 +117,7 @@ function buyFertiliser(){
 }
 
 function buyInsta(){
+	var PRICE_OF_FERT = 200 * stateTime;
 	console.log("buy insta");
 	if ( stateMoney > ( PRICE_OF_FERT * 1.5 ) ){
 		stateForestLevel *= 1.30;
