@@ -32,6 +32,7 @@ function updateResearch() {
 			let $researchBlock = $("#research-template").clone();
 			$researchBlock.removeClass('displaynone');
 			$researchBlock.prependTo('#research-list');
+			$researchBlock.find('.research-id').html(el.id);
 			$researchBlock.find('.research-name').html(el.name);
 			$researchBlock.find('.research-price').html(el.price);
 			$researchBlock.find('.research-station-cost').html(el.station_cost);
@@ -39,6 +40,13 @@ function updateResearch() {
 		}
 	})
 	jsonData.research.reverse();
+
+	$('.research-button').click(function() {
+		let tempId = parseInt($(this).parent().parent().find('.research-id').text());
+		researchTransport(tempId);
+		updateResearch();
+	})
+
 }
 
 function closeResearch() {

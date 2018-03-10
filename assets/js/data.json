@@ -67,5 +67,34 @@
 			"x": 30,
 			"y": 70
 		}
+	],
+
+	"propaganda":[
+		{
+			"id": 1,
+			"title": "Polar bears aren't real.",
+			"effect": [1, 2]
+		},
+		{
+			"id": 2,
+			"title": "North pole doesn't exist.",
+			"effect": []
+
+		},
+		{
+			"id": 3,
+			"title": "CO2 is a hoax.",
+			"effect": []
+		},
+		{
+			"id": 4,
+			"title": "Fast transport = death.",
+			"effect": []
+		},
+		{
+			"id": 5,
+			"title": "The Hyperloop creates black holes.",
+			"effect": []
+		}
 	]
 }

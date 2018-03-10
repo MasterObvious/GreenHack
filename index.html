@@ -34,6 +34,11 @@
       <h3>Budget: £<span id="budget-value">100</span></h3>
       <h3>Time: <span id="time-value">100</span> days</h3>
     </div>
+	<div id="actions_container">
+	  <h1>Actions</h1>
+	  <h3>Start a Propaganda campaign</h3>
+	  <h3>Buy some fertilizer</h3>
+	</div>
     <div id="snackbar">[change text]</div>
     <div id="main_body">
       <div id="map_container">
@@ -61,11 +66,12 @@
           <h3 class="research-name">Trains</h3>
           <div style="display: flex; flex-direction: row;">
             <div style="width: 100%">
+              <p class="displaynone research-id"></p>
               <p>Price: £<span class="research-price"></span></p>
               <p>Station cost: £<span class="research-station-cost"></span></p>
               <p>Pollution: <span class="research-pollution"></span>ppm</p>
             </div>
-            <div class="ok-button">
+            <div class="ok-button research-button">
               <h3 style="margin: 0">Research!</h3>
             </div>
           </div>
@@ -80,6 +86,7 @@
 	  <script type="text/javascript" src="assets/js/game.js"></script>
     <script type="text/javascript" src="assets/js/ui.js"></script>
 	  <script type="text/javascript" src="assets/js/scoreboard.js"></script>
+	  <script type="text/javascript" src="assets/js/actions.js"></script>
 	  <script type="text/javascript">
 	  	$( document ).ready(function() {
 		  loadJSON();

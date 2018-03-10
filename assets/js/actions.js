@@ -4,12 +4,12 @@ Call this function to research the item with id id
 */
 function researchTransport( id ){
 	for ( var i = 0; i < stateCurrentResearch.length; i++ ){
-		if ( id == stateCurrentResearch[i].id ){
+		if ( id == stateCurrentResearch[i] ){
 			snackbar("You have already researched this!");
 			return;
 		}
 	}
-	
+
 	for ( var j = 0; j < jsonData.research.length; j++ ){
 		if ( id == jsonData.research[j].id ){
 			//Check if we can afford it
@@ -17,7 +17,7 @@ function researchTransport( id ){
 				snackbar("You cannot afford this!");
 				return;
 			}else {
-				stateCurrentResearch.push( jsonData.research[j] );
+				stateCurrentResearch.push( jsonData.research[j].id );
 				stateMoney -= jsonData.research[j].price;
 				//Probably want to update UI here
 			}
@@ -26,7 +26,7 @@ function researchTransport( id ){
 }
 
 /*
-Call this function to add a station of research id rec_id to 
+Call this function to add a station of research id rec_id to
 the city city_id
 */
 function buildStation( rec_id, city_id ){
