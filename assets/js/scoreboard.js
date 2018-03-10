@@ -1,29 +1,17 @@
 
 
-var currentTime, currentCO2, currentHappiness, currentBudget;
-var setTime, setCO2, setHappiness, setBudget;
-
-currentTime = 0;
-currentCO2 = 0;
-currentHappiness = 50;
-currentBudget = 10000;
-
 setTime = function(value) {
-  currentTime = value;
-  $('#time-value').html(currentTime + '');
+  $('#time-value').html(value + '');
 }
 
 setCO2 = function(value) {
-  currentCO2 = value;
-  $('#co2-value').html(currentCO2 + '');
+  $('#co2-value').html(value + '');
 }
 
 setHappiness = function(value) {
-  currentHappiness = value;
-  $('#happiness-value').html(currentHappiness + '');
+  $('#happiness-value').html(value + '');
 }
 
 setBudget = function(value) {
-  currentBudget = value;
-  $('#budget-value').html(currentBudget + '');
+  $('#budget-value').html(value + '');
 }
