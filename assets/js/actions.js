@@ -49,16 +49,17 @@ function buildStation(city, type){
 function destroyStation(city, type){
 	stateTravelSpeed -= jsonData.research[type - 1].price / 100;
 	statePollutionLevel -= jsonData.research[type - 1].pollution;
-	
+
 	let index = 0;
+	let toSplice = []
 	if ((index = city.stationList.indexOf(type)) > -1){
 		city.stationList.splice(index, 1);
-
+		index = city.stationList.indexOf(type);
 		for (i = 0; i < city.connectionList.length; i++){
 			if (city.connectionList[i].type == type){
 				connection = city.connectionList[i];
-				city.connectionList.splice(i, 1);
 
+				toSplice.push[i];
 				let ocl = connection.city.connectionList;
 
 				for (j = 0; j < ocl.length; j++){
@@ -70,6 +71,10 @@ function destroyStation(city, type){
 				removeConnection(connection.city, city, type);
 			}
 		}
+	}
+
+	for (i = 0; i < toSplice.length; i++){
+		city.connectionList.splice(i, 1);
 	}
 }
 
@@ -129,6 +134,24 @@ function buyInsta(){
 		forestSize();
 		updateUI();
 	}else {
+		snackbar("You cannot afford this!");
+	}
+}
+
+var bribe_sci_num = 0;
+
+function bribeSci(){
+	if ( stateMoney < 500 ){
+		if ( bribe_sci_num < stateTime ){
+			stateMoney -= 500;
+			stateHappiness *= 1.2;
+			bribe_sci_num += 5;
+		}else {
+			stateMoney -= 500;
+			stateHappiness *= 0.9;
+			bribe_sci_num += 1;
+		}
+	}else{
 		snackbar("You cannot afford this!");
 	}
 }
