@@ -19,6 +19,7 @@ var backgroundAudio;
 
 
 function initGame() {
+	placeCity("harri", 50, 50);
 	loadJSON();
 
 	//Initial state

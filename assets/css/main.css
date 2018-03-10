@@ -44,6 +44,31 @@ html, body {
   margin: 0 auto;
   position: relative;
 }
+
+.city_container{
+  top: 0%;
+  bottom: 0%;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  align-items: center;
+  display: flex;
+}
+
+.displaynone {
+  display: none;
+}
+
+.city{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.city:hover{
+  width: 100%;
+}
+
+
 #score_container {
   position: absolute;
   display: flex;
