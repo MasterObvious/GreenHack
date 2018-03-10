@@ -137,7 +137,7 @@ var bribe_sci_num = 0;
 
 function bribeSci(){
 	if ( stateMoney < 500 ){
-		if ( bribe_sci_num < stateTime &&  ){
+		if ( bribe_sci_num < stateTime ){
 			stateMoney -= 500;
 			stateHappiness *= 1.2;
 			bribe_sci_num += 5;
