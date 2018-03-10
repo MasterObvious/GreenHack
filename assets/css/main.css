@@ -3,7 +3,6 @@ body{
 }
 
 #main_map{
-  background-color: #5b98ed;
   width: 80vw;
   height: 80vh;
   margin: 0 auto;
@@ -14,4 +13,5 @@ body{
   display: flex;
   width: 98vw;
   height: 98vh;
+  z-index: -5;
 }
