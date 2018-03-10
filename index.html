@@ -39,7 +39,7 @@
     </div>
 	<div id="actions_container">
 	  <h1>Actions</h1>
-	  <h3>Start a Propaganda campaign</h3>
+	  <h3 onclick="openProp()">Start a Propaganda campaign</h3>
 	  <h3>Buy some fertilizer</h3>
 	</div>
     <div id="snackbar">[change text]</div>
@@ -82,7 +82,29 @@
         <div id="research-list">
 
         </div>
-      </div>
+		</div>
+		<div id="prop_container" class="displaynone">
+        <div id="prop-close" onclick="closeProp();">
+          <h1 id="prop-close-x" onclick="closeProp();">X</h1>
+        </div>
+        <h2>Start a Propaganda Campaign</h2>
+
+        <div id="prop-template" class="displaynone">
+          <h3 class="prop-name">Trains</h3>
+          <div style="display: flex; flex-direction: row;">
+            <div style="width: 100%">
+              <p class="displaynone prop-id"></p>
+              <p>Price: £<span class="prop-price"></span></p>
+            </div>
+            <div class="ok-button prop-button">
+              <h3 style="margin: 0">Buy</h3>
+            </div>
+          </div>
+        </div>
+        <div id="prop-list">
+
+        </div>
+		</div>
     </div>
 
     <div id="transport_container" class="displaynone">
@@ -108,7 +130,6 @@
 
       </div>
     </div>
-  </div>
 
 
 	  <script type="text/javascript" src="assets/js/game.js"></script>
