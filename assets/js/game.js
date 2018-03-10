@@ -168,3 +168,27 @@ function buildStation(city, type){
 		}
 	}
 }
+
+function destroyStation(city, type){
+	let index = 0;
+	if ((index = city.stationList.indexOf(type)) > -1){
+		city.stationList.splice(index, 1);
+
+		for (i = 0; i < city.connectionList.length; i++){
+			if (city.connectionList[i].type == type){
+				connection = city.connectionList[i];
+				city.connectionList.splice(i, 1);
+
+				let ocl = connection.city.connectionList;
+
+				for (j = 0; j < ocl.length; j++){
+					if (ocl[i].city.name == city.name && ocl[i].type == type){
+						ocl.splice(i, 1);
+					}
+				}
+				removeConnection(city, connection.city, type);
+				removeConnection(connection.city, city, type);
+			}
+		}
+	}
+}
