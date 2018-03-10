@@ -17,9 +17,9 @@ setBudget = function(value) {
 }
 
 function forestSize(){
-	var size = stateForestLevel / 8;
-	$("#forest_land_container").height( size );
-	$("#forest_land_container").width( size );
+	var size = stateForestLevel / 6;
+	$("#forest_land_container").height( 20 + size );
+	$("#forest_land_container").width( 20 + size );
 }
 
 function updateUI() {

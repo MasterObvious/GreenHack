@@ -100,10 +100,12 @@ function checkIfCityIsValid(city, type){
 
 var PRICE_OF_FERT = 3000;
 function buyFertiliser(){
+	console.log("buy fert");
 	if ( stateMoney > PRICE_OF_FERT ){
-		stateForestLevel *= 1.12;
+		stateForestLevel *= 1.30;
 		stateMoney - PRICE_OF_FERT;
 		stateCO2 *= 0.85;
+		forestSize();
 	}else {
 		snackbar("You cannot afford this!");
 	}
