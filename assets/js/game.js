@@ -21,12 +21,28 @@ var jsonData;
 
 var cityList = [];
 
-
 class City{
-	constructor(name, x, y){
-		this.name = name;
+	constructor(id, x, y){
+		this.id = id;
 		this.x = x;
 		this.y = y;
+		this.connectionList = [];
+		this.stationList = [];
+	}
+
+	addConnection(city, type){
+		this.connectionList.push(new Connection(city, type));
+	}
+
+	addStation(type){
+		this.stationList.push(type);
+	}
+}
+
+class Connection{
+	constructor(city, type){
+		this.city = city;
+		this.type = type;
 	}
 }
 
@@ -116,19 +132,6 @@ function loadCities(){
 		placeCity(cities[i].id, cities[i].x, cities[i].y);
 		const city = new City(cities[i].id, cities[i].x, cities[i].y)
 		cityList.push(city);
-		if (i > 0){
-			connectCities(cityList[i], cityList[i-1], 1);
-			connectCities(cityList[i], cityList[i-1], 2);
-			connectCities(cityList[i], cityList[i-1], 3);
-			connectCities(cityList[i], cityList[i-1], 4);
-			connectCities(cityList[i], cityList[i-1], 5);
-			connectCities(cityList[i], cityList[i-1], 6);
-			connectCities(cityList[i], cityList[i-1], 7);
-			removeConnection(cityList[i], cityList[i-1], 1);
-			removeConnection(cityList[i], cityList[i-1], 2);
-			removeConnection(cityList[i], cityList[i-1], 3);
-
-		}
 	}
 }
 
@@ -147,4 +150,21 @@ function adjustMoney() {
   let delta = Math.round(change * numberMultiplier);
   stateMoney += delta;
   setMoney(stateMoney);
+}
+
+function establishConnection(city1, city2, type){
+	city1.addConnection(city2, type);
+	city2.addConnection(city1, type);
+	connectCities(city1, city2, type);
+}
+
+function buildStation(city, type){
+	city.addStation(type);
+	for (i = 0; i < cityList.length; i++){
+		if (city.id != cityList[i].id){
+			if ($.inArray(type, cityList[i].stationList) != -1){
+				establishConnection(city, cityList[i], type);
+			}
+		}
+	}
 }
