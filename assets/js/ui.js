@@ -63,15 +63,15 @@ function openResearch() {
 
 function updateProp() {
 	$('#prop-list').empty();
-	
+
 	var item = jsonData.propaganda[Math.floor(Math.random()*jsonData.propaganda.length)];
 	$('#prop-text').html( "\"" + item.title.toUpperCase() + "\"" );
-	
+
 	const pricey = 500 * parseInt( Math.random() * 50 );
-	
+
 	for ( var i = 1; i <= 5; i++ ){
 		var newPrice = i * pricey;
-		
+
 		let $researchBlock = $("#prop-template").clone();
 		$researchBlock.removeClass('displaynone');
 		$researchBlock.prependTo('#prop-list');
@@ -154,6 +154,12 @@ function closeTransport() {
 function openTransport(cityID) {
 	updateTransport(cityID);
 	$('#transport_container').removeClass('displaynone');
+	$('#city-name').html(choose(['CrispyVille', 'LazTown', 'AzureTown', 'City of Microsoft', 'TrashVille', 'Greeny']))
+}
+
+function choose(choices) {
+  var index = Math.floor(Math.random() * choices.length);
+  return choices[index];
 }
 
 function connectCities(city1, city2, transportTypeId){

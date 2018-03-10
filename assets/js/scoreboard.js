@@ -23,9 +23,9 @@ function forestSize(){
 }
 
 function updateUI() {
-  setTime(stateTime);
-  setCO2(stateCO2);
-  setHappiness(stateHappiness);
-  setBudget(stateMoney);
+  setTime(Math.round(stateTime));
+  setCO2(Math.round(stateCO2));
+  setHappiness(Math.round(stateHappiness));
+  setBudget(Math.round(stateMoney));
   forestSize();
 }
