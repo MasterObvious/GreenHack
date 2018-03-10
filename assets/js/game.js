@@ -18,6 +18,22 @@ var gameRunning = false;
 var backgroundAudio;
 
 var jsonData;
+
+var cityList = [];
+
+
+class City{
+	constructor(name, x, y){
+		this.name = name;
+		this.x = x;
+		this.y = y;
+	}
+}
+
+
+
+
+
 function loadJSON(){
 	$.getJSON('assets/js/data.json', '', function(data){jsonData=data; initGame()});
 }
@@ -98,7 +114,14 @@ function loadCities(){
 
 	for (i = 0; i < l; i++){
 		placeCity(cities[i].id, cities[i].x, cities[i].y);
+		const city = new City(cities[i].id, cities[i].x, cities[i].y)
+		cityList.push(city);
+		if (i > 0){
+			connectCities(cityList[i], cityList[i-1], 3);
+		}
 	}
+
+
 }
 
 function adjustHappiness() {
