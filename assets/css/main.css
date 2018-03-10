@@ -123,7 +123,8 @@ html, body {
   margin: 0.5em;
 }
 
-#research_container,
+#research_container, 
+#prop_container,
 #transport_container {
   position: absolute;
   width: 400px;
@@ -136,18 +137,20 @@ html, body {
   color: white;
   z-index: 10;
 }
-
-#research-template,
-#transport-template {
+	
+#research-template, 
+	#prop-template
+	#transport-template {
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.research-name, p {
+.research-name, p, .prop-name {
   -webkit-margin-before: 0em;
   -webkit-margin-after: 0em;
 }
 
+#prop-close,
 #research-close,
 #transport-close {
   background-color: red;
@@ -159,8 +162,10 @@ html, body {
   cursor: grab;
 }
 
-#research-close-x,
-#transport-close-x {
+	
+#research-close-x, 
+	#prop-close-x, 
+	#transport-close-x {
   margin: 0;
   margin-left: 9px;
   cursor: grab;
@@ -172,7 +177,7 @@ html, body {
   padding: 15px 5px;
 }
 
-#research-list,
+#research-list, #prop-list,
 #transport-list {
   height: 300px;
   overflow-y: scroll;

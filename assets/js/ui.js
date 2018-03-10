@@ -61,6 +61,25 @@ function openResearch() {
 	$('#research_container').removeClass('displaynone');
 }
 
+function updateProp() {
+	$('#prop-list').empty();
+	jsonData.propaganda.reverse().forEach(function(el) {
+		let $researchBlock = $("#prop-template").clone();
+		$researchBlock.removeClass('displaynone');
+		$researchBlock.prependTo('#prop-list');
+		$researchBlock.find('.prop-id').html(el.id);
+		$researchBlock.find('.prop-name').html(el.title);
+		$researchBlock.find('.prop-price').html(el.price);
+	});
+	jsonData.propaganda.reverse();
+
+	$('.prop-button').click(function() {
+		let tempId = parseInt($(this).parent().parent().find('.prop-id').text());
+		researchTransport(tempId);
+		updateResearch();
+	});
+}
+		
 function updateTransport(cityID) {
 	$('#transport-list').empty();
 	jsonData.research.reverse().forEach(function(el) {
@@ -81,8 +100,16 @@ function updateTransport(cityID) {
 		buildStation(cityList[cityID-1], tempId);
 		console.log("Building station at " + cityID);
 		updateTransport(cityID);
-	})
+	});
 
+}
+function closeProp() {
+	$('#prop_container').addClass('displaynone');
+}
+
+function openProp() {
+	updateProp();
+	$('#prop_container').removeClass('displaynone');
 }
 
 function closeTransport() {
