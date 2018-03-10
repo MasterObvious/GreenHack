@@ -77,9 +77,10 @@ function updateProp() {
 		let tempId = parseInt($(this).parent().parent().find('.prop-id').text());
 		researchTransport(tempId);
 		updateResearch();
+		updateUI();
 	});
 }
-		
+
 function updateTransport(cityID) {
 	$('#transport-list').empty();
 	jsonData.research.reverse().forEach(function(el) {
@@ -100,6 +101,7 @@ function updateTransport(cityID) {
 		buildStation(cityList[cityID-1], tempId);
 		console.log("Building station at " + cityID);
 		updateTransport(cityID);
+		updateUI();
 	});
 
 }

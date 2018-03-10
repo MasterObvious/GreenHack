@@ -14,6 +14,7 @@ function researchTransport( id ){
 				stateMoney -= jsonData.research[j].price;
 				//Probably want to update UI here
 			}
+			updateUI();
 		}
 	}
 }
@@ -100,5 +101,5 @@ function checkIfCityIsValid(city, type){
 
 
 function propagandaEffect(happiness, budget) {
-	
+
 }

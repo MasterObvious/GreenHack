@@ -116,6 +116,10 @@ function runGame() {
 	}
 }
 
+function loseGame() {
+  $('#game-over').removeClass('displaynone');
+}
+
 $('#next_month').click(function() {
   runGame();
 })
@@ -126,6 +130,7 @@ function adjustCO2() {
   let change = statePollutionLevel - stateForestLevel;
   let delta = Math.round(change * correction * numberMultiplier);
   stateCO2 = Math.max(stateCO2 + delta, 0);
+  stateForestLevel = Math.min(Math.max(stateForestLevel - stateCO2, 0), 100)
   updateUI();
 }
 

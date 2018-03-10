@@ -7,6 +7,16 @@ html, body {
   margin: 0;
 }
 
+#game-over {
+  position: absolute;
+  left: 25%;
+  width: 45%;
+  top: 10%;
+  color: red;
+  z-index: 20;
+  font-size: 10em;
+}
+
 #main_map{
   width: 100%;
   height: 100%;
@@ -137,7 +147,7 @@ html, body {
   margin: 0.5em;
 }
 
-#research_container, 
+#research_container,
 #prop_container,
 #transport_container {
   position: absolute;
@@ -151,8 +161,8 @@ html, body {
   color: white;
   z-index: 10;
 }
-	
-#research-template, 
+
+#research-template,
 	#prop-template
 	#transport-template {
   margin-top: 5px;
@@ -176,9 +186,9 @@ html, body {
   cursor: grab;
 }
 
-	
-#research-close-x, 
-	#prop-close-x, 
+
+#research-close-x,
+	#prop-close-x,
 	#transport-close-x {
   margin: 0;
   margin-left: 9px;
