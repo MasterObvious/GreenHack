@@ -100,8 +100,6 @@ function runGame() {
 		adjustHappiness();
     adjustMoney();
     setIslandScale(100-stateCO2);
-		generateEmergencies();
-		updateInformation();
     updateUI();
 		if ( stateCO2 >= 100 ) {
       gameRunning = false;
