@@ -130,6 +130,24 @@ function buyInsta(){
 	}
 }
 
+var bribe_sci_num = 0;
+
+function bribeSci(){
+	if ( stateMoney < 500 ){
+		if ( bribe_sci_num < stateTime &&  ){
+			stateMoney -= 500;
+			stateHappiness *= 1.2;
+			bribe_sci_num += 5;
+		}else {
+			stateMoney -= 500;
+			stateHappiness *= 0.9;
+			bribe_sci_num += 1;
+		}
+	}else{
+		snackbar("You cannot afford this!");
+	}
+}
+
 function propagandaEffect(happiness, budget, effectiveness) {
 	stateHappiness = Math.min(stateHappiness + 10*happiness*effectiveness, 100);
 	stateMoney += budget*10000*effectiveness;
