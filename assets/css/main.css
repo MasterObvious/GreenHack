@@ -62,10 +62,14 @@ html, body {
 .city{
   width: 80%;
   margin: 0 auto;
+  -webkit-transition: width 0.15s linear;
+  transition: width 0.15s linear;
 }
 
 .city:hover{
   width: 100%;
+  -webkit-transition: width 0.15s linear;
+  transition: width 0.15s linear;
 }
 
 

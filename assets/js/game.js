@@ -25,6 +25,7 @@ function loadJSON(){
 function initGame() {
 	console.log("loading json");
 	console.log(jsonData)
+	loadCities();
 	//Initial state
 	stateTime = 5 * 12;
 	stateMoney = 5000;
@@ -92,4 +93,14 @@ function adjustCO2() {
   let delta = Math.round(change * correction * numberMultiplier);
   stateCO2 -= delta;
   setCO2(stateCO2);
+}
+
+function loadCities(){
+	var cities = jsonData.cities;
+	console.log("got here");
+	let l = cities.length;
+
+	for (i = 0; i < l; i++){
+		placeCity(cities[i].id, cities[i].x, cities[i].y);
+	}
 }
