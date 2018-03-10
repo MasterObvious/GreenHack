@@ -104,17 +104,36 @@ function checkIfCityIsValid(city, type){
 	}
 }
 
-var PRICE_OF_FERT = 3000;
+
 function buyFertiliser(){
+	var PRICE_OF_FERT = 200 * stateTime;
+	console.log("buy fert");
 	if ( stateMoney > PRICE_OF_FERT ){
-		stateForestLevel *= 1.12;
-		stateMoney - PRICE_OF_FERT;
+		stateForestLevel *= 1.10;
+		stateMoney -= PRICE_OF_FERT;
 		stateCO2 *= 0.85;
+		forestSize();
+		updateUI();
 	}else {
 		snackbar("You cannot afford this!");
 	}
 }
 
-function propagandaEffect(happiness, budget) {
+function buyInsta(){
+	var PRICE_OF_FERT = 200 * stateTime;
+	console.log("buy insta");
+	if ( stateMoney > ( PRICE_OF_FERT * 1.5 ) ){
+		stateForestLevel *= 1.30;
+		stateMoney -= ( PRICE_OF_FERT * 1.5 );
+		stateCO2 *= 0.75;
+		forestSize();
+		updateUI();
+	}else {
+		snackbar("You cannot afford this!");
+	}
+}
 
+function propagandaEffect(happiness, budget, effectiveness) {
+	stateHappiness = Math.min(stateHappiness + 10*happiness*effectiveness, 100);
+	stateMoney += budget*10000*effectiveness;
 }

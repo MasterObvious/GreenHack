@@ -65,7 +65,7 @@ function initGame() {
 	stateHappiness = 50;
 	stateCO2 = 0;
   statePollutionLevel = 0;
-  stateForestLevel = 0;
+  stateForestLevel = 1;
   stateTravelSpeed = 0;
 	stateCurrentResearch = [];
 	stateMapStations = [];
@@ -148,7 +148,7 @@ function loadCities(){
 
 function adjustHappiness() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
-  let correction = 0.1;
+  let correction = 0.05;
   let change = (stateTime - stateTravelSpeed)*(100-stateHappiness);
   let delta = Math.round(change * correction * numberMultiplier);
   stateHappiness = Math.min(stateHappiness - delta, 100);
@@ -157,7 +157,7 @@ function adjustHappiness() {
 
 function adjustMoney() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
-  let change = 100*stateTime - stateCO2;
+  let change = 10*(10*stateTime - stateCO2);
   let correction = 10;
   let delta = Math.round(change * numberMultiplier * correction);
   stateMoney += delta;

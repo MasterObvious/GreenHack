@@ -63,21 +63,32 @@ function openResearch() {
 
 function updateProp() {
 	$('#prop-list').empty();
-	jsonData.propaganda.reverse().forEach(function(el) {
+	
+	var item = jsonData.propaganda[Math.floor(Math.random()*jsonData.propaganda.length)];
+	$('#prop-text').html( "\"" + item.title.toUpperCase() + "\"" );
+	
+	const pricey = 500 * parseInt( Math.random() * 50 );
+	
+	for ( var i = 1; i <= 5; i++ ){
+		var newPrice = i * pricey;
+		
 		let $researchBlock = $("#prop-template").clone();
 		$researchBlock.removeClass('displaynone');
 		$researchBlock.prependTo('#prop-list');
-		$researchBlock.find('.prop-id').html(el.id);
-		$researchBlock.find('.prop-name').html(el.title);
-		$researchBlock.find('.prop-price').html(el.price);
-	});
-	jsonData.propaganda.reverse();
+		$researchBlock.find('.prop-id').html(newPrice);
+		$researchBlock.find('.prop-name').html("Spend £" + newPrice);
+		$researchBlock.find('.prop-price').html(newPrice);
+	}
 
 	$('.prop-button').click(function() {
 		let tempId = parseInt($(this).parent().parent().find('.prop-id').text());
-		researchTransport(tempId);
-		updateResearch();
-		updateUI();
+		if ( tempId > stateMoney ){
+			propagandaEffect( item.effect[0], item.effect[1], Math.random() );
+			updateUI();
+		}else {
+			snackbar("You cannot afford!");
+		}
+		closeProp();
 	});
 }
 
