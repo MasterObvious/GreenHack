@@ -23,6 +23,9 @@ function placeCity(cityName, x, y){
 	$city.css("top", y + "%");
 	$city.prependTo("#map_container");
 	$city.attr("id", cityName);
+	$city.click(function() {
+		openTransport(cityName);
+	})
 }
 
 function updateResearch() {
@@ -56,6 +59,39 @@ function closeResearch() {
 function openResearch() {
 	updateResearch();
 	$('#research_container').removeClass('displaynone');
+}
+
+function updateTransport(cityID) {
+	$('#transport-list').empty();
+	jsonData.research.reverse().forEach(function(el) {
+		if (!cityList[cityID-1].stationList.includes(el.id)) {
+			let $transportBlock = $("#transport-template").clone();
+			$transportBlock.removeClass('displaynone');
+			$transportBlock.prependTo('#transport-list');
+			$transportBlock.find('.transport-id').html(el.id);
+			$transportBlock.find('.transport-name').html(el.name);
+			$transportBlock.find('.transport-station-cost').html(el.station_cost);
+			$transportBlock.find('.transport-pollution').html(el.pollution);
+		}
+	})
+	jsonData.research.reverse();
+
+	$('.transport-button').click(function() {
+		let tempId = parseInt($(this).parent().parent().find('.transport-id').text());
+		buildStation(cityList[cityID-1], tempId);
+		console.log("Building station at " + cityID);
+		updateTransport(cityID);
+	})
+
+}
+
+function closeTransport() {
+	$('#transport_container').addClass('displaynone');
+}
+
+function openTransport(cityID) {
+	updateTransport(cityID);
+	$('#transport_container').removeClass('displaynone');
 }
 
 function connectCities(city1, city2, transportTypeId){
