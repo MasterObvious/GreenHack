@@ -95,7 +95,7 @@ function initGame() {
 
   gameRunning = true;
 }
-
+stateCO2
 function runGame() {
   if ( gameRunning ){
 		stateTime += 1;

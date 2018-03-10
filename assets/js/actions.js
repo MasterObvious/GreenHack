@@ -29,10 +29,12 @@ function establishConnection(city1, city2, type){
 	city2.addConnection(city1, type);
 	connectCities(city1, city2, type);
 	stateTravelSpeed += jsonData.research[type].price / 100;
+	statePollutionLevel += jsonData.research[type].pollution;
 }
 
 function buildStation(city, type){
 	if (checkIfCityIsValid(city, type)){
+		updateUI();
 		city.addStation(type);
 		for (i = 0; i < cityList.length; i++){
 			if (city.id != cityList[i].id){
@@ -81,11 +83,11 @@ function checkIfCityIsValid(city, type){
 	if ( alreadyResearched ){
 		//Check we haven't built it in the city
 		if ( city.stationList.indexOf(type) == -1 ){
-			if ( research_item.station_cost > stateMoney ){
+			if ( jsonData.research[type].price > stateMoney ){
 				snackbar("You cannot afford this!");
 				return false;
 			}else {
-				stateMoney -= research_item.station_cost;
+				stateMoney -= jsonData.research[type].price;
 				//Probably want to update ui here
 				return true;
 			}
@@ -99,6 +101,16 @@ function checkIfCityIsValid(city, type){
 	}
 }
 
+var PRICE_OF_FERT = 3000;
+function buyFertiliser(){
+	if ( stateMoney > PRICE_OF_FERT ){
+		stateForestLevel *= 1.12;
+		stateMoney - PRICE_OF_FERT;
+		stateCO2 *= 0.85;
+	}else {
+		snackbar("You cannot afford this!");
+	}
+}
 
 function propagandaEffect(happiness, budget) {
 
