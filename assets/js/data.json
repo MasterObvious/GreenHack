@@ -1,6 +1,7 @@
 {
 	"research": [
 		{
+			"id": 1,
 			"name": "Buses",
 			"price": 150
 		}
