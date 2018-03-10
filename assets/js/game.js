@@ -99,6 +99,8 @@ function loadCities(){
 	for (i = 0; i < l; i++){
 		placeCity(cities[i].id, cities[i].x, cities[i].y);
 	}
+}
+
 function adjustHappiness() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
   let correction = 0.1;
