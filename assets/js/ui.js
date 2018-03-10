@@ -82,8 +82,9 @@ function updateProp() {
 
 	$('.prop-button').click(function() {
 		let tempId = parseInt($(this).parent().parent().find('.prop-id').text());
-		if ( tempId > stateMoney ){
+		if ( tempId < stateMoney ){
 			propagandaEffect( item.effect[0], item.effect[1], Math.random() );
+			stateMoney -= tempId;
 			updateUI();
 		}else {
 			snackbar("You cannot afford!");
