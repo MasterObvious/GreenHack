@@ -17,15 +17,10 @@ var stateMapStations;
 var gameRunning = false;
 var backgroundAudio;
 
-var jsonData;
-function loadJSON(){
-	$.getJSON('assets/js/data.json', '', function(data){jsonData=data});
-}
-
 function initGame() {
-	console.log("loading json");
+	placeCity("harri", 50, 50);
 	loadJSON();
-	console.log(jsonData)
+
 	//Initial state
 	stateTime = 5 * 12;
 	stateMoney = 5000;
@@ -56,7 +51,7 @@ function initGame() {
 	backgroundAudio.play();
 
   gameRunning = true;
-	window.setInterval(runGame, 1000);
+	window.setInterval(runGame, 2000);
 
 }
 
@@ -65,7 +60,7 @@ function runGame() {
 		gameRunning = false;
 		showGameStats();
 	} else if ( gameRunning ){
-		stateTime -= 5;
+		stateTime -= 1;
 
 		adjustCO2();
 		adjustHappiness()
@@ -93,4 +88,10 @@ function adjustCO2() {
   let delta = Math.round(change * correction * numberMultiplier);
   stateCO2 -= delta;
   setCO2(stateCO2);
+}
+
+function adjustHappiness() {
+  let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
+  let correction = 0.1;
+  let change = stateTravelSpeed - state
 }
