@@ -82,6 +82,31 @@
       </div>
     </div>
 
+    <div id="city_container" class="displaynone">
+      <div id="city-close" onclick="closeCity();">
+        <h1 id="city-close-x" onclick="closeCity();">X</h1>
+      </div>
+      <h2 id="city-name">CrispyVille</h2>
+
+      <div id="transport-template" class="displaynone">
+        <h3 class="transport-name">Trains</h3>
+        <div style="display: flex; flex-direction: row;">
+          <div style="width: 100%">
+            <p class="displaynone transport-id"></p>
+            <p>Station cost: £<span class="transport-station-cost"></span></p>
+            <p>Pollution: <span class="transport-pollution"></span>ppm</p>
+          </div>
+          <div class="ok-button city-build-button">
+            <h3 style="margin: 0">Build!</h3>
+          </div>
+        </div>
+      </div>
+      <div id="transport-list">
+
+      </div>
+    </div>
+  </div>
+
 
 	  <script type="text/javascript" src="assets/js/game.js"></script>
     <script type="text/javascript" src="assets/js/ui.js"></script>
