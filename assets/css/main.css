@@ -109,6 +109,7 @@ html, body {
   padding: 10px;
   font-family: sans-serif;
   color: white;
+  z-index: 10;
 }
 
 #research-template {
