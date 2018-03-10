@@ -97,3 +97,8 @@ function checkIfCityIsValid(city, type){
 		return false
 	}
 }
+
+
+function propagandaEffect(happiness, budget) {
+	
+}
