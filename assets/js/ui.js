@@ -23,6 +23,9 @@ function placeCity(cityName, x, y){
 	$city.css("top", y + "%");
 	$city.prependTo("#map_container");
 	$city.attr("id", cityName);
+	$city.click(function() {
+		openTransport(cityName);
+	})
 }
 
 function updateResearch() {
@@ -58,8 +61,6 @@ function openResearch() {
 	$('#research_container').removeClass('displaynone');
 }
 
-
-
 function updateProp() {
 	$('#prop-list').empty();
 	jsonData.propaganda.reverse().forEach(function(el) {
@@ -76,10 +77,32 @@ function updateProp() {
 		let tempId = parseInt($(this).parent().parent().find('.prop-id').text());
 		researchTransport(tempId);
 		updateResearch();
+	});
+}
+		
+function updateTransport(cityID) {
+	$('#transport-list').empty();
+	jsonData.research.reverse().forEach(function(el) {
+		if (!cityList[cityID-1].stationList.includes(el.id)) {
+			let $transportBlock = $("#transport-template").clone();
+			$transportBlock.removeClass('displaynone');
+			$transportBlock.prependTo('#transport-list');
+			$transportBlock.find('.transport-id').html(el.id);
+			$transportBlock.find('.transport-name').html(el.name);
+			$transportBlock.find('.transport-station-cost').html(el.station_cost);
+			$transportBlock.find('.transport-pollution').html(el.pollution);
+		}
 	})
+	jsonData.research.reverse();
+
+	$('.transport-button').click(function() {
+		let tempId = parseInt($(this).parent().parent().find('.transport-id').text());
+		buildStation(cityList[cityID-1], tempId);
+		console.log("Building station at " + cityID);
+		updateTransport(cityID);
+	});
 
 }
-
 function closeProp() {
 	$('#prop_container').addClass('displaynone');
 }
@@ -89,6 +112,14 @@ function openProp() {
 	$('#prop_container').removeClass('displaynone');
 }
 
+function closeTransport() {
+	$('#transport_container').addClass('displaynone');
+}
+
+function openTransport(cityID) {
+	updateTransport(cityID);
+	$('#transport_container').removeClass('displaynone');
+}
 
 function connectCities(city1, city2, transportTypeId){
 	let xconnection = (Math.abs(city1.x - city2.x) > Math.abs(city1.y - city2.y));

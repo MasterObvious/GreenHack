@@ -123,20 +123,24 @@ html, body {
   margin: 0.5em;
 }
 
-#research_container, #prop_container {
+#research_container, 
+#prop_container,
+#transport_container {
   position: absolute;
   width: 400px;
   height: 400px;
   left: calc(50% - 200px);
-  right: calc(50% - 200px);
+  top: calc(50% - 200px);
   background-color: pink;
   padding: 10px;
   font-family: sans-serif;
   color: white;
   z-index: 10;
 }
-
-#research-template, #prop-template {
+	
+#research-template, 
+	#prop-template
+	#transport-template {
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -146,20 +150,25 @@ html, body {
   -webkit-margin-after: 0em;
 }
 
-#research-close, #prop-close {
+#prop-close,
+#research-close,
+#transport-close {
   background-color: red;
   width: 40px;
   height: 40px;
   border-radius: 20px;
   position: absolute;
   right: 10px;
-  cursor: pointer;
+  cursor: grab;
 }
 
-#research-close-x, #prop-close-x {
+	
+#research-close-x, 
+	#prop-close-x, 
+	#transport-close-x {
   margin: 0;
   margin-left: 9px;
-  cursor: pointer;
+  cursor: grab;
 }
 
 .ok-button {
@@ -168,7 +177,8 @@ html, body {
   padding: 15px 5px;
 }
 
-#research-list, #prop-list {
+#research-list, #prop-list,
+#transport-list {
   height: 300px;
   overflow-y: scroll;
 }

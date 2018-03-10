@@ -64,6 +64,8 @@ function initGame() {
 	stateMoney = 5000;
 	stateHappiness = 100;
 	stateCO2 = 0;
+  statePollutionLevel = 0;
+  stateForestLevel = 0;
   stateTravelSpeed = 0;
 	stateCurrentResearch = [];
 	stateMapStations = [];
@@ -100,8 +102,6 @@ function runGame() {
 		adjustHappiness();
     adjustMoney();
     setIslandScale(100-stateCO2);
-		generateEmergencies();
-		updateInformation();
     updateUI();
 		if ( stateCO2 >= 100 ) {
       gameRunning = false;
@@ -120,7 +120,7 @@ function adjustCO2() {
   let change = statePollutionLevel - stateForestLevel;
   let delta = Math.round(change * correction * numberMultiplier);
   stateCO2 = Math.max(stateCO2 + delta, 0);
-  setCO2(stateCO2);
+  updateUI();
 }
 
 function loadCities(){
@@ -141,7 +141,7 @@ function adjustHappiness() {
   let change = stateTime - stateTravelSpeed;
   let delta = Math.round(change * correction * numberMultiplier);
   stateHappiness = Math.min(stateHappiness + delta, 100);
-  setHappiness(stateHappiness);
+  updateUI();
 }
 
 function adjustMoney() {
@@ -149,7 +149,7 @@ function adjustMoney() {
   let change = 10*stateTime - stateCO2;
   let delta = Math.round(change * numberMultiplier);
   stateMoney += delta;
-  setMoney(stateMoney);
+  updateUI();
 }
 
 function establishConnection(city1, city2, type){
@@ -164,6 +164,30 @@ function buildStation(city, type){
 		if (city.id != cityList[i].id){
 			if ($.inArray(type, cityList[i].stationList) != -1){
 				establishConnection(city, cityList[i], type);
+			}
+		}
+	}
+}
+
+function destroyStation(city, type){
+	let index = 0;
+	if ((index = city.stationList.indexOf(type)) > -1){
+		city.stationList.splice(index, 1);
+
+		for (i = 0; i < city.connectionList.length; i++){
+			if (city.connectionList[i].type == type){
+				connection = city.connectionList[i];
+				city.connectionList.splice(i, 1);
+
+				let ocl = connection.city.connectionList;
+
+				for (j = 0; j < ocl.length; j++){
+					if (ocl[i].city.name == city.name && ocl[i].type == type){
+						ocl.splice(i, 1);
+					}
+				}
+				removeConnection(city, connection.city, type);
+				removeConnection(connection.city, city, type);
 			}
 		}
 	}
