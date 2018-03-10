@@ -17,7 +17,7 @@ setBudget = function(value) {
 }
 
 function forestSize(){
-	var size = stateForestLevel / 6;
+	var size = Math.max( stateForestLevel, 280 ) / 6;
 	$("#forest_land_container").height( 20 + size );
 	$("#forest_land_container").width( 20 + size );
 }
