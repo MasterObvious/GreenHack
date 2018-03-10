@@ -114,7 +114,7 @@ function buyFertiliser(){
 	var PRICE_OF_FERT = 200 * stateTime;
 	console.log("buy fert");
 	if ( stateMoney > PRICE_OF_FERT ){
-		stateForestLevel *= 1.10;
+		stateForestLevel *= 1.15;
 		stateMoney -= PRICE_OF_FERT;
 		stateCO2 *= 0.85;
 		forestSize();
@@ -128,7 +128,7 @@ function buyInsta(){
 	var PRICE_OF_FERT = 200 * stateTime;
 	console.log("buy insta");
 	if ( stateMoney > ( PRICE_OF_FERT * 1.5 ) ){
-		stateForestLevel *= 1.30;
+		stateForestLevel *= 1.25;
 		stateMoney -= ( PRICE_OF_FERT * 1.5 );
 		stateCO2 *= 0.75;
 		forestSize();
@@ -136,6 +136,7 @@ function buyInsta(){
 	}else {
 		snackbar("You cannot afford this!");
 	}
+	console.log( stateForestLevel );
 }
 
 var bribe_sci_num = 0;

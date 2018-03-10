@@ -65,7 +65,7 @@ function initGame() {
 	stateHappiness = 50;
 	stateCO2 = 0;
   statePollutionLevel = 0;
-  stateForestLevel = 1;
+  stateForestLevel = 10;
   stateTravelSpeed = 0;
 	stateCurrentResearch = [];
 	stateMapStations = [];
