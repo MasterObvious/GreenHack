@@ -155,6 +155,12 @@ function closeTransport() {
 function openTransport(cityID) {
 	updateTransport(cityID);
 	$('#transport_container').removeClass('displaynone');
+	$('#city-name').html(choose(['CrispyVille', 'LazTown', 'AzureTown', 'City of Microsoft', 'TrashVille', 'Greeny']));
+}
+
+function choose(choices) {
+  var index = Math.floor(Math.random() * choices.length);
+  return choices[index];
 }
 
 function connectCities(city1, city2, transportTypeId){
