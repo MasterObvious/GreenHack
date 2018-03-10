@@ -17,12 +17,6 @@ var stateMapStations;
 var gameRunning = false;
 var backgroundAudio;
 
-<<<<<<< HEAD
-function initGame() {
-	placeCity("harri", 50, 50);
-	loadJSON();
-
-=======
 var jsonData;
 function loadJSON(){
 	$.getJSON('assets/js/data.json', '', function(data){jsonData=data; initGame()});
@@ -31,9 +25,8 @@ function loadJSON(){
 function initGame() {
 	console.log("loading json");
 	console.log(jsonData)
->>>>>>> 677e134ea9ef4b72af500067b3ab262841a65686
 	//Initial state
-	stateTime = 5 * 12;
+	stateTime = 0;
 	stateMoney = 5000;
 	stateHappiness = 100;
 	stateCO2 = 0;
@@ -62,8 +55,6 @@ function initGame() {
 	backgroundAudio.play();
 
   gameRunning = true;
-	window.setInterval(runGame, 2000);
-
 }
 
 function runGame() {
@@ -74,14 +65,12 @@ function runGame() {
 		stateTime -= 1;
 
 		adjustCO2();
-		adjustHappiness()
+		adjustHappiness();
+    adjustMoney();
+    setIslandScale(100-stateCO2);
 		generateEmergencies();
 		updateInformation();
-		if ( stateMoney <= 0 ){
-			gameRunning = false;
-			loseGame();
-		}
-    if ( stateCO2 <= 0 ) {
+    if ( stateCO2 >= 100 ) {
       gameRunning = false;
       loseGame();
     }
@@ -97,12 +86,23 @@ function adjustCO2() {
   let correction = 0.1;
   let change = statePollutionLevel - stateForestLevel;
   let delta = Math.round(change * correction * numberMultiplier);
-  stateCO2 -= delta;
+  stateCO2 = Math.max(stateCO2 + delta, 0);
   setCO2(stateCO2);
 }
 
 function adjustHappiness() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
   let correction = 0.1;
-  let change = stateTravelSpeed - state
+  let change = stateTime - stateTravelSpeed;
+  let delta = Math.round(change * correction * numberMultiplier);
+  stateHappiness = Math.min(stateHappiness + delta, 100);
+  setHappiness(stateHappiness);
+}
+
+function adjustMoney() {
+  let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
+  let change = 10*stateTime - stateCO2;
+  let delta = Math.round(change * numberMultiplier);
+  stateMoney += delta;
+  setMoney(stateMoney);
 }
