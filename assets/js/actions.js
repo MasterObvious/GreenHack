@@ -114,6 +114,7 @@ function buyFertiliser(){
 	}
 }
 
-function propagandaEffect(happiness, budget) {
-
+function propagandaEffect(happiness, budget, effectiveness) {
+	stateHappiness = Math.min(stateHappiness + 10*happiness*effectiveness, 100);
+	stateMoney += budget*10000*effectiveness;
 }
