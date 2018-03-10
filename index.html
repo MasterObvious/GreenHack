@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
 
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css" />
+	<link rel="stylesheet" type="text/css" href="assets/css/toast.css" />
 	<link rel="apple-touch-icon" sizes="57x57" href="assets/img/favicons/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="assets/img/favicons/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="assets/img/favicons/apple-icon-72x72.png">
@@ -27,21 +28,24 @@
   </head>
 
   <body>
-    <div id="main_body">
-      <div id="map_container">
-        <img id= "main_map" src="assets/images/map.png" alt="game map"/>
-        <div id= "snow_land_container">
-          <img id= "snow_land" src="assets/images/snow.png" alt="snow land" />
-        </div>
-
-      </div>
-
+    <div id="score_container">
+      <h3>CO2 Level: <span>100</span>%</h3>
+      <h3>Happiness: <span>80</span>%</h3>
+      <h3>Budget: £<span>100</span></h3>
+      <h3>Time: <span>100</span> days</h3>
     </div>
+    <div id="snackbar">[change text]</div>
+    <div id="map_container">
+      <img id= "main_map" src="assets/images/map.png" alt="game map"/>
+      <div id= "snow_land_container">
+        <img id= "snow_land" src="assets/images/snow.png" alt="snow land" />
+      </div>
 	  <script type="text/javascript" src="assets/js/game.js"></script>
 	  <script type="text/javascript">
 	  	$( document ).ready(function() {
 		  initGame();
 		});
 	  </script>
+
   </body>
 </html>
