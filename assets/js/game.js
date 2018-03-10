@@ -19,12 +19,11 @@ var backgroundAudio;
 
 var jsonData;
 function loadJSON(){
-	$.getJSON('assets/js/data.json', '', function(data){jsonData=data});
+	$.getJSON('assets/js/data.json', '', function(data){jsonData=data; initGame()});
 }
 
 function initGame() {
 	console.log("loading json");
-	loadJSON();
 	console.log(jsonData)
 	//Initial state
 	stateTime = 5 * 12;
