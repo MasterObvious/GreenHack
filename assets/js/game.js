@@ -1,4 +1,3 @@
-
 var stateTime;
 var stateMoney;
 var stateHappiness;
@@ -13,13 +12,8 @@ var stateCurrentResearch;
 var stateMapStations;
 
 var gameRunning = false;
-
 var backgroundAudio;
-var jsonData;
 
-function loadJSON(){
-    //$.getJSON('data.json', '', function(data){ jsonData = data; });
-}
 
 function initGame() {
 	loadJSON();
@@ -43,12 +37,6 @@ function initGame() {
 	
 	var city3 = [ cars.id ];
 	stateMapStations.push( city3 );
-	
-	
-	stateMapStations = []
-	stateMapStations.push( [] );
-	
-	
 
 	backgroundAudio = new Audio( 'assets/sounds/greenland.mp3' );
 	backgroundAudio.volume = 0.3;
@@ -59,23 +47,4 @@ function initGame() {
 	}, false);
 	backgroundAudio.play();
 
-}
-
-function startGame(){
-	gameRunning = true;
-	
-	//We will adjust time, money, happiness, CO2 here
-	
-	//Call runGame every 3 seconds
-	window.setInterval(runGame, 3000);
-}
-
-function runGame(){
-	if ( stateTime <= 0 && gameRunning ){
-		gameRunning = false;
-		//End game
-	}else {
-		stateTime--;
-		
-	}
 }

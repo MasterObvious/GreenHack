@@ -28,15 +28,25 @@
   </head>
 
   <body>
-	<div id="snackbar">[change text]</div>
+    <div id="score_container">
+      <h3>CO2 Level: <span id="co2-value">100</span>%</h3>
+      <h3>Happiness: <span id="happiness-value">80</span>%</h3>
+      <h3>Budget: £<span id="budget-value">100</span></h3>
+      <h3>Time: <span id="time-value">100</span> days</h3>
+    </div>
+    <div id="snackbar">[change text]</div>
     <div id="map_container">
       <img id= "main_map" src="assets/images/map.png" alt="game map"/>
-    </div>
+      <div id= "snow_land_container">
+        <img id= "snow_land" src="assets/images/snow.png" alt="snow land" />
+      </div>
 	  <script type="text/javascript" src="assets/js/game.js"></script>
+	  <script type="text/javascript" src="assets/js/scoreboard.js"></script>
 	  <script type="text/javascript">
 	  	$( document ).ready(function() {
 		  initGame();
 		});
 	  </script>
+
   </body>
 </html>
