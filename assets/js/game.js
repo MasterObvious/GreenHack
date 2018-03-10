@@ -16,8 +16,9 @@ var backgroundAudio;
 
 
 function initGame() {
+	placeCity("harri", 50, 50);
 	loadJSON();
-	
+
 	//Initial state
 	stateTime = 5 * 12;
 	stateMoney = 5000;
@@ -25,16 +26,16 @@ function initGame() {
 	stateCO2 = 0;
 	stateCurrentResearch = [];
 	stateMapStations = [];
-	
+
 	var cars = jsonData.research[0];
 	stateCurrentResearch.push( cars );
-	
+
 	var city1 = [ cars.id ];
 	stateMapStations.push( city1 );
-	
+
 	var city2 = [ cars.id ];
 	stateMapStations.push( city2 );
-	
+
 	var city3 = [ cars.id ];
 	stateMapStations.push( city3 );
 

@@ -12,3 +12,12 @@ function setIslandScale(percentage){
 		width: percentage + '%'
 	}, 600, function(){})
 }
+
+function placeCity(cityName, x, y){
+	let $city = $(".city_container").clone();
+	$city.removeClass("displaynone");
+	$city.css("top", x + "%");
+	$city.css("left", y + "%");
+	$city.prependTo("#map_container");
+	$city.attr("id", cityName);
+}
