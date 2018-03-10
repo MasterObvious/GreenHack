@@ -5,6 +5,7 @@ var stateCO2;
 
 var stateForestLevel;
 var statePollutionLevel;
+var stateTravelSpeed;
 
 var stateCurrentResearch;
 
@@ -63,6 +64,7 @@ function initGame() {
 	stateMoney = 5000;
 	stateHappiness = 100;
 	stateCO2 = 0;
+  stateTravelSpeed = 0;
 	stateCurrentResearch = [];
 	stateMapStations = [];
 
