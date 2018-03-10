@@ -57,3 +57,14 @@ function buildStation( rec_id, city_id ){
 		snackbar("You haven't already researched this!");
 	}
 }
+
+var PRICE_OF_FERT = 3000;
+function buyFertiliser(){
+	if ( stateMoney > PRICE_OF_FERT ){
+		stateForestLevel *= 1.12;
+		stateMoney - PRICE_OF_FERT;
+		stateCO2 *= 0.85;
+	}else {
+		snackbar("You cannot afford this!");
+	}
+}

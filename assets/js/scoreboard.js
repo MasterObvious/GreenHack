@@ -16,9 +16,16 @@ setBudget = function(value) {
   $('#budget-value').html(value + '');
 }
 
+function forestSize(){
+	var size = stateForestLevel / 8;
+	$("#forest_land_container").height( size );
+	$("#forest_land_container").width( size );
+}
+
 function updateUI() {
   setTime(stateTime);
   setCO2(stateCO2);
   setHappiness(stateHappiness);
   setBudget(stateMoney);
+  forestSize();
 }
