@@ -91,10 +91,7 @@ function initGame() {
 }
 
 function runGame() {
-  if ( stateTime <= 0 && gameRunning ){
-		gameRunning = false;
-		showGameStats();
-	} else if ( gameRunning ){
+  if ( gameRunning ){
 		stateTime -= 1;
 
 		adjustCO2();
