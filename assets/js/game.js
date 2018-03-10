@@ -120,7 +120,7 @@ function adjustCO2() {
   let change = statePollutionLevel - stateForestLevel;
   let delta = Math.round(change * correction * numberMultiplier);
   stateCO2 = Math.max(stateCO2 + delta, 0);
-  setCO2(stateCO2);
+  updateUI;
 }
 
 function loadCities(){
@@ -141,7 +141,7 @@ function adjustHappiness() {
   let change = stateTime - stateTravelSpeed;
   let delta = Math.round(change * correction * numberMultiplier);
   stateHappiness = Math.min(stateHappiness + delta, 100);
-  setHappiness(stateHappiness);
+  updateUI;
 }
 
 function adjustMoney() {
@@ -149,7 +149,7 @@ function adjustMoney() {
   let change = 10*stateTime - stateCO2;
   let delta = Math.round(change * numberMultiplier);
   stateMoney += delta;
-  setMoney(stateMoney);
+  updateUI;
 }
 
 function establishConnection(city1, city2, type){
