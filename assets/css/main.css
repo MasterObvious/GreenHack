@@ -133,7 +133,21 @@ html, body {
   padding: 5px;
 }
 
-#score_container > h3 {
+#next_month {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+  width: 10%;
+  height: 40px;
+  background-color: darkgreen;
+  right: 0%;
+  border-radius: 0 0 5px 5px;
+  padding: 5px;
+}
+
+#score_container > h3,
+#next_month > h3 {
   font-size: 1em;
   color: white;
   font-family: sans-serif;

@@ -62,13 +62,15 @@ function initGame() {
 	//Initial state
 	stateTime = 0;
 	stateMoney = 5000;
-	stateHappiness = 100;
+	stateHappiness = 50;
 	stateCO2 = 0;
   statePollutionLevel = 0;
   stateForestLevel = 0;
   stateTravelSpeed = 0;
 	stateCurrentResearch = [];
 	stateMapStations = [];
+
+  updateUI();
 
 	var cars = jsonData.research[0];
 	stateCurrentResearch.push( cars.id );
@@ -96,7 +98,7 @@ function initGame() {
 stateCO2
 function runGame() {
   if ( gameRunning ){
-		stateTime -= 1;
+		stateTime += 1;
 
 		adjustCO2();
 		adjustHappiness();
@@ -113,6 +115,10 @@ function runGame() {
     }
 	}
 }
+
+$('#next_month').click(function() {
+  runGame();
+})
 
 function adjustCO2() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
@@ -138,57 +144,16 @@ function loadCities(){
 function adjustHappiness() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
   let correction = 0.1;
-  let change = stateTime - stateTravelSpeed;
+  let change = (stateTime - stateTravelSpeed)*(100-stateHappiness);
   let delta = Math.round(change * correction * numberMultiplier);
-  stateHappiness = Math.min(stateHappiness + delta, 100);
+  stateHappiness = Math.min(stateHappiness - delta, 100);
   updateUI();
 }
 
 function adjustMoney() {
   let numberMultiplier = (Math.random() + 1.5)/2; // [0.75,1.25]
-  let change = 10*stateTime - stateCO2;
+  let change = 100*stateTime - stateCO2;
   let delta = Math.round(change * numberMultiplier);
   stateMoney += delta;
   updateUI();
-}
-
-function establishConnection(city1, city2, type){
-	city1.addConnection(city2, type);
-	city2.addConnection(city1, type);
-	connectCities(city1, city2, type);
-}
-
-function buildStation(city, type){
-	city.addStation(type);
-	for (i = 0; i < cityList.length; i++){
-		if (city.id != cityList[i].id){
-			if ($.inArray(type, cityList[i].stationList) != -1){
-				establishConnection(city, cityList[i], type);
-			}
-		}
-	}
-}
-
-function destroyStation(city, type){
-	let index = 0;
-	if ((index = city.stationList.indexOf(type)) > -1){
-		city.stationList.splice(index, 1);
-
-		for (i = 0; i < city.connectionList.length; i++){
-			if (city.connectionList[i].type == type){
-				connection = city.connectionList[i];
-				city.connectionList.splice(i, 1);
-
-				let ocl = connection.city.connectionList;
-
-				for (j = 0; j < ocl.length; j++){
-					if (ocl[i].city.name == city.name && ocl[i].type == type){
-						ocl.splice(i, 1);
-					}
-				}
-				removeConnection(city, connection.city, type);
-				removeConnection(connection.city, city, type);
-			}
-		}
-	}
 }
