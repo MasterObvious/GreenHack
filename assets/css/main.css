@@ -35,7 +35,6 @@ html, body {
   display: flex;
   width: 98vw;
   height: 98vh;
-  z-index: -5;
 }
 
 #map_container{
@@ -45,14 +44,20 @@ html, body {
   position: relative;
 }
 
+#road_map{
+  top: 0px;
+  left: 0px;
+  position: absolute;
+}
+
 .city_container{
   top: 0%;
-  bottom: 0%;
   position: absolute;
   width: 80px;
   height: 80px;
   align-items: center;
   display: flex;
+  z-index: 1;
 }
 
 .displaynone {
@@ -71,6 +76,7 @@ html, body {
   -webkit-transition: width 0.15s linear;
   transition: width 0.15s linear;
 }
+
 
 
 #score_container {
