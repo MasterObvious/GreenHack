@@ -28,8 +28,8 @@ function establishConnection(city1, city2, type){
 	city1.addConnection(city2, type);
 	city2.addConnection(city1, type);
 	connectCities(city1, city2, type);
-	stateTravelSpeed += jsonData.research[type].price / 100;
-	statePollutionLevel += jsonData.research[type].pollution;
+	stateTravelSpeed += jsonData.research[type - 1].price / 100;
+	statePollutionLevel += jsonData.research[type - 1].pollution;
 }
 
 function buildStation(city, type){
@@ -47,6 +47,9 @@ function buildStation(city, type){
 }
 
 function destroyStation(city, type){
+	stateTravelSpeed -= jsonData.research[type - 1].price / 100;
+	statePollutionLevel -= jsonData.research[type - 1].pollution;
+	
 	let index = 0;
 	if ((index = city.stationList.indexOf(type)) > -1){
 		city.stationList.splice(index, 1);
@@ -83,11 +86,11 @@ function checkIfCityIsValid(city, type){
 	if ( alreadyResearched ){
 		//Check we haven't built it in the city
 		if ( city.stationList.indexOf(type) == -1 ){
-			if ( jsonData.research[type].price > stateMoney ){
+			if ( jsonData.research[type - 1].station_cost > stateMoney ){
 				snackbar("You cannot afford this!");
 				return false;
 			}else {
-				stateMoney -= jsonData.research[type].price;
+				stateMoney -= jsonData.research[type - 1].station_cost;
 				//Probably want to update ui here
 				return true;
 			}

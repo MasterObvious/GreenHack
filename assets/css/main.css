@@ -218,6 +218,12 @@ html, body {
   padding: 15px 5px;
 }
 
+.delete-button {
+  background-color: red;
+  border-radius: 5px;
+  padding: 15px 5px;
+}
+
 #research-list, #prop-list,
 #transport-list {
   height: 300px;
